@@ -19,7 +19,7 @@ public class MessagingController {
         
         if(!repeatCallers.contains(fromNumber)){
             repeatCallers.add(fromNumber);
-            return "Welcome to stonksbot \uD83D\uDCC8. Text me a valid ticker symbol and I'll give you quote data.";
+            return "Bem-vindo ao stonksbot \uD83D\uDCC8. Envie um código válido e eu lhe mandarei a cotação.";
         }
 
         Optional<Price> price = FinnhubService.getStockDetails(symbol);
@@ -27,19 +27,19 @@ public class MessagingController {
         if(price.isPresent()){
             return messageBuilder(price.get(), symbol);
         } else {
-            return "Sorry. We couldn't find any info on that one. Try another.";
+            return "Desculpe, não encontramos nenhuma informação sobre esta ação. Tente novamente.";
         }
 
     }
 
     private String messageBuilder(Price price, String symbol) {
-        return String.format("Here are the most up-to-date %s prices:\n" +
-                        "\uD83C\uDF05 Open price of the day: $%s\n" +
-                        "\uD83D\uDCC8 High price of the day: $%s\n" +
-                        "\uD83D\uDCC9 Low price of the day: $%s\n" +
-                        "\uD83D\uDD14 Current price: $%s\n" +
-                        "\uD83D\uDCC6 Previous close price: $%s\n" +
-                        "\uD83E\uDD1E Send another symbol.",
+        return String.format("Aqui estão os preços %s mais atualizados:\n" +
+                        "\uD83C\uDF05 Preço de abertura do dia: $%s\n" +
+                        "\uD83D\uDCC8 Preço máximo do dia: $%s\n" +
+                        "\uD83D\uDCC9 Preço mínimo do dia: $%s\n" +
+                        "\uD83D\uDD14 Preço atual: $%s\n" +
+                        "\uD83D\uDCC6 Preço de fechamento anterior: $%s\n" +
+                        "\uD83E\uDD1E Enviar outro código.",
                 symbol.toUpperCase(), price.open, price.high, price.low, price.current, price.close);
     }
 
