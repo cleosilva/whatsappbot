@@ -31,7 +31,6 @@ public class MessagingController {
         }
 
     }
-
     private String messageBuilder(Price price, String symbol) {
         return String.format("Aqui estão os preços %s mais atualizados:\n" +
                         "\uD83C\uDF05 Preço de abertura do dia: $%s\n" +
@@ -42,5 +41,4 @@ public class MessagingController {
                         "\uD83E\uDD1E Enviar outro código.",
                 symbol.toUpperCase(), price.open, price.high, price.low, price.current, price.close);
     }
-
 }
